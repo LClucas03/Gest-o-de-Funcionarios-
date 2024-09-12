@@ -1,0 +1,61 @@
+# Sistema de Gerenciamento de Funcionários
+
+Este projeto é um sistema de gerenciamento de funcionários, incluindo informações sobre departamentos, funcionários e salários. O sistema permite a inserção, atualização e exclusão de registros, bem como a realização de consultas sobre funcionários e salários.
+
+## Estrutura do Banco de Dados
+
+O banco de dados `EmployeeManagement` contém três tabelas principais:
+
+1. **Departamentos**
+   - `department_id`: Identificador único do departamento.
+   - `nome_do_departamento`: Nome do departamento (único).
+
+2. **Funcionários**
+   - `employee_id`: Identificador único do funcionário.
+   - `first_name`: Primeiro nome do funcionário.
+   - `sobrenome`: Sobrenome do funcionário.
+   - `email`: E-mail do funcionário (único).
+   - `telefone`: Telefone do funcionário.
+   - `hire_date`: Data de contratação.
+   - `departamento_id`: Identificador do departamento (chave estrangeira).
+
+3. **Salários**
+   - `salary_id`: Identificador único do salário.
+   - `employee_id`: Identificador do funcionário (chave estrangeira).
+   - `quantidade`: Valor do salário.
+   - `data_efetiva`: Data efetiva do salário.
+
+## Configuração
+
+1. **Criação do Banco de Dados:**
+
+   Execute o script SQL para criar o banco de dados e as tabelas:
+   ```sql
+   -- Criação do Banco de Dados
+   CRIAR BANCO DE DADOS EmployeeManagement;
+   USE EmployeeManagement;
+
+   -- Criação das Tabelas
+   CRIAR TABELA Departamentos (
+       department_id INT AUTO_INCREMENT CHAVE PRIMÁRIA,
+       nome_do_departamento VARCHAR(100) ÚNICO NÃO NULO
+   );
+
+   CRIAR TABELA Funcionários (
+       employee_id INT AUTO_INCREMENT CHAVE PRIMÁRIA,
+       first_name VARCHAR(50) NÃO NULO,
+       sobrenome VARCHAR(50) NÃO NULO,
+       e-mail VARCHAR(100) ÚNICO NÃO NULO,
+       telefone VARCHAR(20),
+       hire_date DATA NÃO NULA,
+       departamento_id INT,
+       CHAVE ESTRANGEIRA (departamento_id) REFERÊNCIAS Departamentos(department_id)
+   );
+
+   CRIAR TABELA Salários (
+       salary_id INT AUTO_INCREMENT CHAVE PRIMÁRIA,
+       employee_id INT,
+       quantidade DECIMAL(10, 2) NÃO NULO,
+       data_efetiva DATA NÃO NULA,
+       CHAVE ESTRANGEIRA (employee_id) REFERÊNCIAS Funcionários(employee_id)
+   );
