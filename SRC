@@ -1,0 +1,19 @@
+src/
+│
+├── config/               # Arquivos de configuração
+│   ├── db_config.py       # Configuração de banco de dados para Python
+│
+├── models/               # Modelos que representam tabelas do banco de dados
+│   ├── department.py      # Modelo de departamento
+│   ├── employee.py        # Modelo de funcionário
+│   ├── salary.py          # Modelo de salário
+│
+├── controllers/          # Lógica de controle
+│   ├── department_controller.py   # Lógica para departamentos
+│   ├── employee_controller.py     # Lógica para funcionários
+│   ├── salary_controller.py       # Lógica para salários
+│
+├── utils/                # Utilitários e funções auxiliares
+│   ├── helpers.py        # Funções auxiliares
+│
+└── main.py               # Ponto de entrada principal da aplicação
